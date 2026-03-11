@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Técnico-Comercial: Salud S.A. IA</title>
+    <style>
+        :root {
+            --saludsa-blue: #0056b3;
+            --accent-gold: #d4af37;
+            --accent-green: #28a745;
+            --text-dark: #333;
+            --bg-light: #f4f7fa;
+            --bg-white: #ffffff;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            background-color: #0b1121; /* Dark tech background */
+            color: #e2e8f0;
+            background-image: radial-gradient(circle at top right, #1e293b 0%, transparent 40%),
+                              radial-gradient(circle at bottom left, #0f172a 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: transparent;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--saludsa-blue);
+        }
+
+        h1 {
+            color: var(--saludsa-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #38bdf8 !important;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            color: #94a3b8;
+        }
+
+        section {
+            margin-bottom: 60px;
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #f8fafc;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: var(--saludsa-blue);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-gold);
+            padding-left: 15px;
+            color: #38bdf8 !important;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        h3 {
+            color: var(--saludsa-blue);
+            margin-bottom: 15px;
+            color: #38bdf8 !important;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 350px;
+            background-color: #e2e8f0;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px 0 40px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            height: 400px;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #0056b3 0%, #0088ff 100%);
+            color: white;
+            border: none;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .content-box {
+            padding: 20px;
+            color: #cbd5e1;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        /* Agents Grid */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .agent-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.8);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: #cbd5e1;
+        }
+
+        .agent-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--saludsa-blue);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            border-color: #38bdf8;
+        }
+
+        .agent-card h4 {
+            font-size: 1.4rem;
+            color: var(--saludsa-blue);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Pricing Section */
+        .pricing-container {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 30px !important;
+            align-items: stretch !important;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .plan-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            width: 100% !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid #eaeaea;
+            display: flex !important;
+            flex-direction: column !important;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: var(--saludsa-blue);
+        }
+
+        .plan-card.highlight {
+            border: 2px solid var(--saludsa-blue);
+            transform: scale(1.05);
+        }
+
+        .plan-card.highlight:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent-gold);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #1e293b; /* Dark text for contrast */
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 20;
+        }
+        
+        /* Specific Badge Styles */
+        .badge-growth {
+            background: #8b5cf6 !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .badge-enterprise {
+            background: #fbbf24 !important;
+            color: #000000 !important;
+            border: 1px solid #000000;
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .plan-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #444;
+            display: block;
+            margin-bottom: 10px;
+            color: #38bdf8 !important;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--saludsa-blue);
+            display: block;
+            line-height: 1;
+            color: #fbbf24;
+        }
+
+        .plan-desc {
+            font-size: 1rem;
+            color: #777;
+            margin-top: 15px;
+            font-style: italic;
+            color: #94a3b8;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            flex-grow: 1;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 30px;
+            color: #555;
+            color: #cbd5e1;
+        }
+
+        .plan-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            background: var(--saludsa-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #004494;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--saludsa-blue);
+            border: 2px solid var(--saludsa-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--saludsa-blue);
+            color: white;
+        }
+
+        .insight-box {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid var(--saludsa-blue);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            background: rgba(56, 189, 248, 0.1);
+            border-color: #38bdf8;
+            color: #bae6fd;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            color: #777;
+            border-top: 1px solid #ddd;
+        }
+    
+        /* Flowchart Styles */
+        .comparison-wrapper {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 40px 0;
+            border: 1px solid #eaeaea;
+            background: rgba(15, 23, 42, 0.6);
+            border-color: rgba(255,255,255,0.1);
+        }
+        .comparison-diagram {
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+        .flow {
+            flex: 1;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8fafc;
+            background: rgba(30, 41, 59, 0.8);
+        }
+        .flow.traditional { border-top: 4px solid #94a3b8; }
+        .flow.automated { border-top: 4px solid var(--accent-green); background: #f0fdf4; box-shadow: 0 0 20px rgba(40, 167, 69, 0.1); background: rgba(6, 78, 59, 0.2); border-color: #10b981; }
+        .flow h3 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #334155;
+            color: #e2e8f0;
+        }
+        .flow.automated h3 { color: #166534; color: #34d399; }
+        .step {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            font-size: 0.95rem;
+            background: #1e293b;
+            color: #cbd5e1;
+            border-color: #334155;
+        }
+        .step.warning { border-left: 4px solid #f59e0b; }
+        .step.highlight { border-left: 4px solid var(--accent-green); font-weight: bold; color: #15803d; }
+        .step.success { background: #dcfce7; border-color: #86efac; color: #166534; font-weight: bold; background: rgba(6, 78, 59, 0.5); color: #6ee7b7; border-color: #059669; }
+        .arrow {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .vs {
+            display: flex;
+            align-items: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            padding: 0 10px;
+        }
+        .split {
+            display: flex;
+            gap: 10px;
+            background: transparent; border: none; box-shadow: none; padding: 0;
+
+        }
+        .split > div {
+            flex: 1;
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            font-size: 0.85rem;
+            background: #1e293b;
+            color: #cbd5e1;
+            border-color: #334155;
+        }
+        .path-a { border-left: 3px solid var(--accent-green) !important; }
+        .path-b { border-left: 3px solid #f59e0b !important; }
+    
+        /* Plan Image Headers */
+        .plan-img-header {
+            width: 100%;
+            height: 180px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Starter Styling */
+        .plan-card:nth-child(1) { border-top: 4px solid #3b82f6; }
+        .plan-card:nth-child(1) .plan-img-header { background-image: url('assets/plan_starter_v3.png'); }
+        
+        /* Growth Styling */
+        .plan-card:nth-child(2) { border-top: 44px solid #8b5cf6; box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
+        .plan-card:nth-child(2) .plan-img-header { background-image: url('./oferta-saludsa-bienestar.png') !important; }
+        
+        /* Custom Styling - The Moon/Toys */
+        .plan-card:nth-child(3) { 
+            border: 2px solid #fbbf24; 
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.4); 
+            transform: scale(1.08); 
+            z-index: 10;
+            background: linear-gradient(180deg, rgba(30,41,59,0.95) 0%, rgba(15,23,42,0.95) 100%);
+        }
+        .plan-card:nth-child(3):hover { transform: scale(1.1) translateY(-10px); box-shadow: 0 0 50px rgba(251, 191, 36, 0.6); }
+        .plan-card:nth-child(3) .plan-img-header { background-image: url('./custom-enterprise-lab.png') !important; }
+        .plan-card:nth-child(3) .plan-title { color: #fbbf24 !important; text-shadow: 0 0 20px rgba(251, 191, 36, 0.5); font-size: 2.2rem; }
+        .plan-card:nth-child(3) .plan-price { color: #fbbf24; }
+        .plan-card:nth-child(3) .btn { background: #fbbf24; color: #000; box-shadow: 0 0 15px rgba(251, 191, 36, 0.5); border: none; }
+        
+        /* ALIGNMENT OVERRIDES */
+        .plan-features { flex-grow: 1; }
+        .btn { margin-top: auto; }
+        
+        /* Update Image URLs to V3 */
+        .hero-img img { content: url('./marketing-hero-realista.png'); }
+        .bienestar-img img { content: url('./bienestar-vitality-realista.png'); }
+        .cobertura-img img { content: url('./cobertura-red-realista.png'); }
+        .plan-sky-guitarra-img img { content: url('./plan-sky-guitarra.png'); }
+        
+        .plan-card-growth .plan-img-header { background-image: url('./oferta-saludsa-bienestar.png') !important; }
+        .plan-card-sky .plan-img-header { background-image: url('./plan-sky-guitarra.png') !important; }
+
+    </style>
+</head>
+<body>
+
+    <div class="image-placeholder hero-img">
+        <img src="./marketing-hero-realista.png" alt="Equipo de Marketing en Oficina Moderna" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Reporte de Necesidades de Marketing - Implementación de IA en Salud S.A.</h1>
+            <p class="subtitle">Fecha: 10 de marzo de 2026</p>
+        </header>
+
+        <section id="objetivo-general">
+            <h2>1. Objetivo General</h2>
+            <p class="section-intro"><strong>Implementar una agencia interna basada en IA</strong> que elimine la dependencia de proveedores externos y abarque: conceptualización creativa, diseño de campañas, orquestación multiplataforma, manejo de bases de datos, mejora continua de producto, investigación web (web research) y potenciación del portafolio. Todo esto soportado por infraestructura segura (Mac Minis / VPS dedicados) y metodologías de entrenamiento como <strong>Vibe Coding (V.I.B.E. Coding)</strong>, que enseñan al equipo a "fluir" con los LLMs y a levantar proyectos completos sin necesidad de código tradicional, generando un control total sobre la experiencia del cliente y la hiperproductividad del equipo.</p>
+        </section>
+
+        <section id="implementacion">
+            <h2>2. Implementación In-House de la Agencia</h2>
+            <h3>2.1 Flujo estratégico</h3>
+            <ol>
+                <li><strong>Integración del ADN Salud S.A.:</strong> cada agente conoce valores, tono y emociones clave.</li>
+                <li><strong>Vibe Coding &amp; vibra creativa:</strong> técnicas para traducir briefs y emociones en prompts de alta precisión.</li>
+                <li><strong>Soporte técnico dedicado:</strong> especialistas que configuran, parchean y resguardan la “memoria” de cada agente.</li>
+                <li><strong>Infraestructura segura:</strong> uso de Mac Minis dedicadas / servidores aislados para proteger datos y facilitar auditorías.</li>
+            </ol>
+
+            <h3>2.2 Cuatro agentes clave</h3>
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <h4>✨ Agente Vitality ("uno para todo")</h4>
+                    <ul>
+                        <li>Enrolamiento: solicita y valida datos faltantes (p. ej. correos de beneficiarios).</li>
+                        <li>Enganche y motivación: educa sobre beneficios, incentiva hábitos y seguimiento dentro de la app.</li>
+                        <li>Companion 24/7: mantiene conversaciones multicanal (WhatsApp, mail, push) y vigila hitos de uso.</li>
+                        <li>Escalada inteligente: alerta al equipo humano ante riesgos o fricciones.</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <h4>🎨 Agente Agencia</h4>
+                    <ul>
+                        <li>Recibe briefs, propone conceptos, copy y arte.</li>
+                        <li>Optimiza contenido para cada plataforma (Meta, TikTok, Google, OOH digital).</li>
+                        <li>Genera arte/vídeo con IA siguiendo manual de marca.</li>
+                        <li>Controla entregas, consistencia visual y tono.</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <h4>📊 Agente Big Data / Planner</h4>
+                    <ul>
+                        <li>Construye planes de medios y presupuestos dinámicos.</li>
+                        <li>Orquesta estrategias de venta cruzada y remarketing.</li>
+                        <li>Convierte leads fríos en templados/calientes mediante hiperpersonalización.</li>
+                        <li>Opera como hub de insights y prioriza los prospectos con mayor ROI.</li>
+                    </ul>
+                </div>
+                <div class="agent-card">
+                    <h4>📈 Agente Producto &amp; Tendencias</h4>
+                    <ul>
+                        <li>Monitorea movimientos de la competencia y nuevas ofertas.</li>
+                        <li>Mapea diferenciadores y recomienda ajustes de planes.</li>
+                        <li>Traduce insights en mejoras comunicacionales y de beneficios.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-placeholder bienestar-img" style="height: 250px;">
+                <img src="./bienestar-vitality-realista.png" alt="Familia Latinoamericana Activa con Smartwatches" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+            </div>
+
+            <div class="image-placeholder cobertura-img" style="height: 250px;">
+                <img src="./cobertura-red-realista.png" alt="Ejecutivos Analizando Red de Cobertura Global" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+            </div>
+        </section>
+
+        <section id="seguridad">
+            <h2>3. Soporte Multiplataforma y Seguridad</h2>
+            <ul>
+                <li><strong>Conectividad segura</strong> con bases de datos, CRM, canales (WhatsApp Business, email, push, landing pages) y dashboards.</li>
+                <li><strong>Pruebas internas de 3 meses</strong> por agente antes de exponerlos a clientes, con metas de precisión &gt;95%.</li>
+                <li><strong>Agentes de ciberseguridad</strong> que realizan pen-testing pasivo para detectar ventanas abiertas y proteger API keys.</li>
+                <li><strong>Visión cross-equity:</strong> aprovechar la hiperproductividad para abrir nuevas líneas (p. ej. venta de accesorios deportivos) usando la misma base instalada.</li>
+            </ul>
+        </section>
+
+        <section id="vision-equipo">
+            <h2>4. Visión Estratégica y Habilitación del Equipo</h2>
+            <ul>
+                <li><strong>Hiperproductividad:</strong> cada integrante domina Vibe Coding, orquestación y despliegue de agentes.</li>
+                <li><strong>Escuelita IA:</strong> programa intensivo para homologar conocimiento (fundamentos de LLMs, prompts avanzados, automatización, métricas).</li>
+                <li><strong>Rol del “mecánico de IA”:</strong> especialista que tropicaliza las mejores prácticas globales y mantiene los Ferraris listos.</li>
+                <li><strong>Governance:</strong> lineamientos claros de uso, backups, control de versiones y auditoría de prompts.</li>
+            </ul>
+        </section>
+
+
+
+        <section id="propuestas-economicas">
+            <h2>5. Propuestas Económicas</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 20px; width: 100%; display: block;">Estructuras de costos diseñadas para escalar junto con el valor entregado a Salud S.A.</p>
+            
+            <div class="pricing-container">
+                <!-- Plan Growth -->
+                <div class="plan-card plan-card-growth highlight">
+                    <div class="badge badge-growth">Recomendado</div>
+                    <div class="plan-img-header"></div>
+                    <div class="plan-header">
+                        <span class="plan-title">Plan Growth</span>
+                        <span class="plan-price">$55k<span style="font-size:1rem; font-weight:normal;">*</span></span>
+                        <p class="plan-desc">Despliegue del ecosistema de 5 Agentes Inteligentes con IA predictiva.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><strong>Agente Liquidador Avanzado</strong> (Integración profunda insurtech).</li>
+                        <li><strong>Agente Comercial SAC</strong> (Análisis predictivo de anulación).</li>
+                        <li><strong>Agente de Ventas</strong> (Integración HubSpot, Scraping, Role Play Holograma).</li>
+                        <li><strong>Agente Digital Vitality</strong> (Tokens, NFTs, Análisis de Riesgo vs Deporte).</li>
+                        <li><strong>Agente de Talento Humano</strong> (Copiloto de Selección y Sala de Desahogo).</li>
+                        <li>Soporte 24/7 y SLA garantizado.</li>
+                        <li style="color:#38bdf8;">* Fee Mensual: $2,500 (Ejecución y mantenimiento).</li>
+                        <li style="color:#fbbf24; font-weight:bold;">Incluye 1 persona In-House dedicada (Entrenamiento, automatización y capacitación).</li>
+                    </ul>
+                    <a href="https://wa.me/593999793094?text=Hola%20Felipe%2C%20estoy%20interesado%20en%20el%20Plan%20Growth%20de%20la%20propuesta%20de%20IA%20de%20OpenClaw%20para%20Salud%20S.A." target="_blank" class="btn" style="text-decoration:none; display:block; box-sizing:border-box;">Quiero mi agente de IA</a>
+                </div>
+
+                <!-- Plan Sky -->
+                <div class="plan-card plan-card-sky">
+                    <div class="badge badge-enterprise">Especial</div>
+                    <div class="plan-img-header"><img src="./plan-sky-guitarra.png" alt="Plan Sky - Guitarra Creativa" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+                    <div class="plan-header">
+                        <span class="plan-title">Plan Sky</span>
+                        <span class="plan-price">$48k<span style="font-size:1rem; font-weight:normal;">*</span></span>
+                        <p class="plan-desc">Plan especial para un gerente de marketing creativo, amante de la música y de la innovación.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>Agente Vitality ("uno para todo")</li>
+                        <li>Agente Agencia</li>
+                        <li>Agente Big Data / Planner</li>
+                        <li>Agente Producto &amp; Tendencias</li>
+                        <li>Soporte 24/7 y SLA garantizado.</li>
+                        <li style="color:#38bdf8;">* Fee Mensual: $2,500 (Ejecución y mantenimiento).</li>
+                        <li style="color:#fbbf24; font-weight:bold;">Incluye 1 persona In-House dedicada (Entrenamiento, automatización y capacitación).</li>
+                    </ul>
+                    <a href="https://wa.me/593999793094?text=Hola%20Felipe%2C%20estoy%20interesado%20en%20el%20Plan%20Sky%20de%20la%20propuesta%20de%20IA%20de%20OpenClaw%20para%20Salud%20S.A." target="_blank" class="btn btn-outline"  style="text-decoration:none; display:block; box-sizing:border-box; border-color: #fbbf24; background-color: #fbbf24; color: #000000 !important; font-weight: 900;">Quiero mi agente de IA</a>
+                </div>
+                
+                <!-- Custom Enterprise Plan -->
+                <div class="plan-card">
+                    <div class="badge badge-enterprise">Enterprise</div>
+                    <div class="plan-img-header" style="background-image: url('./custom-enterprise-lab.png') !important;"></div>
+                    <div class="plan-header">
+                        <span class="plan-title">Custom Enterprise</span>
+                        <span class="plan-price">A Consultar</span>
+                        <p class="plan-desc">Soluciones a medida para necesidades corporativas complejas.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>Agentes y funcionalidades ilimitadas.</li>
+                        <li>Desarrollo de IA Generativa y Machine Learning.</li>
+                        <li>Equipo In-House dedicado.</li>
+                        <li>Soporte y consultoría 24/7.</li>
+                    </ul>
+                    <a href="https://wa.me/593999793094?text=Hola%20Felipe%2C%20me%20interesa%20el%20Plan%20Custom%20Enterprise%20para%20Salud%20S.A." target="_blank" class="btn btn-outline" style="text-decoration:none; display:block; box-sizing:border-box;">Consultar</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="cierre">
+            <h2>6. Próximos Pasos</h2>
+            <div class="image-placeholder" style="height: 300px; margin-bottom: 30px;">
+                <img src="./ruta-estrategica-cta.png" alt="Próximos Pasos - Ruta Estratégica" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+            </div>
+            <p style="text-align: center;">Estamos listos para iniciar un piloto (Proof of Concept) sin impacto en el entorno de producción actual. La innovación comienza con el primer paso.</p>
+            <br>
+            <a href="https://wa.me/593999793094?text=Hola%20Felipe%2C%20me%20gustar%C3%ADa%20agendar%20el%20Kick-off%20del%20piloto%20de%20OpenClaw%20para%20Salud%20S.A." target="_blank" class="btn" style="max-width: 300px; margin: 0 auto; text-decoration:none; display:block; box-sizing:border-box;">Quiero mi agente de IA</a>
+        </section>
+
+        <div class="footer">
+            <p>© 2026 Innovación y Tecnología | Preparado para Salud S.A. | Versión 2.1</p>
+            <p>Confidencial y Propietario</p>
+        </div>
+    </div>
+
+</body>
+</html>
